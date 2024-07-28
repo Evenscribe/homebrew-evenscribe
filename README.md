@@ -1,15 +1,15 @@
-# Evenscribe Collector
+# Evenscribe
 
 ## How do I install these formulae?
 
-`brew install evenscribe/collector/<formula>`
+`brew install evenscribe/homebrew-evenscribe/<formula>`
 
-Or `brew tap evenscribe/collector` and then `brew install <formula>`.
+Or `brew tap evenscribe/homebrew-evenscribe` and then `brew install <formula>`.
 
 Or, in a [`brew bundle`](https://github.com/Homebrew/homebrew-bundle) `Brewfile`:
 
 ```ruby
-tap "evenscribe/collector"
+tap "evenscribe/homebrew-evenscribe"
 brew "<formula>"
 ```
 
