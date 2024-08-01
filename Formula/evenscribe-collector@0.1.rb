@@ -1,8 +1,7 @@
 class EvenscribeCollectorAT01 < Formula
   desc "Log Collector for Evenscribe Logging Infra"
   homepage "https://www.evenscribe.com"
-  url "https://github.com/Evenscribe/evenscribe-collector.git", branch: "main"
-  version "0.1"
+  url "https://github.com/Evenscribe/evenscribe-collector.git", tag: "0.1"
   license "Apache-2.0"
 
   depends_on "cmake" => :build
@@ -11,7 +10,12 @@ class EvenscribeCollectorAT01 < Formula
   uses_from_macos "openssl"
 
   def install
-    system "cmake", "-S", ".", "-B", "build", *std_cmake_args
+    args = %w[
+      -DCMAKE_BUILD_TYPE=Release
+      -DWITH_OPENSSL=ON
+    ]
+    args << "-DPostgreSQL_TYPE_INCLUDE_DIR=/usr/include/postgresql/" unless OS.mac?
+    system "cmake", "-S", ".", "-B", "build", *std_cmake_args, *args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
   end
